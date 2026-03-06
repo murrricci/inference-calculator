@@ -20,13 +20,13 @@ const MODELS = {
 
 const TIERS = {
   agents: { label: "Агенты (Codex, Cline, OpenCode...)", icon: "\u{1F916}", color: "#2563eb",
-    defs: { people: 300, skill: "intermediate", sessionsPerDay: 30, inputPerSession: 12000, outputPerSession: 6000, concurrency: 0.20, chain: 8, model: "Qwen3-235B-A22B-Instruct" },
+    defs: { people: 100, skill: "intermediate", sessionsPerDay: 3, inputPerSession: 12000, outputPerSession: 6000, concurrency: 0.20, chain: 8, model: "Qwen3-235B-A22B-Instruct" },
     desc: "Автономные кодинг-агенты: многошаговые цепочки, tool-calling, длинные сессии" },
   complex: { label: "Чат: сложные задачи", icon: "\u{1F9E0}", color: "#7c3aed",
-    defs: { people: 1500, skill: "intermediate", sessionsPerDay: 18, inputPerSession: 4000, outputPerSession: 2500, concurrency: 0.10, chain: 1, model: "Qwen3-235B-A22B-Instruct" },
+    defs: { people: 300, skill: "intermediate", sessionsPerDay: 4, inputPerSession: 4000, outputPerSession: 2500, concurrency: 0.10, chain: 1, model: "Qwen3-235B-A22B-Instruct" },
     desc: "Аналитика, рефакторинг, длинные документы, итеративные диалоги" },
   simple: { label: "Чат: простые задачи", icon: "\u{1F4AC}", color: "#059669",
-    defs: { people: 3500, skill: "intermediate", sessionsPerDay: 10, inputPerSession: 1500, outputPerSession: 800, concurrency: 0.06, chain: 1, model: "Qwen3-30B-A3B-Thinking" },
+    defs: { people: 3500, skill: "intermediate", sessionsPerDay: 20, inputPerSession: 1500, outputPerSession: 800, concurrency: 0.06, chain: 1, model: "Qwen3-Coder-30B" },
     desc: "Q&A, переводы, саммари, письма" },
 };
 
@@ -91,7 +91,7 @@ function Tog({label,checked,onChange}){
 
 export default function Calc(){
   const [gpuKey,setGpuKey]=useState("H100 80GB");
-  const [fp8,setFp8]=useState(true);
+  const [fp8,setFp8]=useState(false);
   const [ctx,setCtx]=useState(65536);
   const [ragOn,setRagOn]=useState(false);
   const [ragCh,setRagCh]=useState(4000);
