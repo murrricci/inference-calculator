@@ -4,7 +4,9 @@ const MODELS = {
   "Qwen3-235B-A22B-Instruct": { label: "Qwen3-235B-A22B-Instruct", tp: 235, ap: 22, moe: true, vF8: 240, vBF: 470, tF8: 70, tBF: 45, gF8: 4, gBF: 8, ctx: 32768, ctxM: 131072, note: "MoE 128e/8a. Non-thinking. TP8 BF16 / TP4 FP8", tk: 0 },
   "Qwen3-235B-A22B-Thinking": { label: "Qwen3-235B-Thinking-2507", tp: 235, ap: 22, moe: true, vF8: 240, vBF: 470, tF8: 50, tBF: 30, gF8: 4, gBF: 8, ctx: 32768, ctxM: 262144, note: "Thinking-only. Reasoning chains 3-10x output", tk: 4 },
   "Qwen3-30B-A3B-Thinking": { label: "Qwen3-30B-A3B-Thinking", tp: 30, ap: 3, moe: true, vF8: 32, vBF: 60, tF8: 180, tBF: 120, gF8: 1, gBF: 1, ctx: 32768, ctxM: 131072, note: "MoE 1 GPU. Thinking для рутинных задач", tk: 3 },
-  "Qwen3-Coder-30B": { label: "Qwen3-Coder-30B", tp: 30, ap: 30, moe: false, vF8: 32, vBF: 60, tF8: 130, tBF: 80, gF8: 1, gBF: 1, ctx: 32768, ctxM: 131072, note: "Dense 30B, оптимизирована под код", tk: 0 },
+  "Qwen3-Coder-30B-A3B": { label: "Qwen3-Coder-30B-A3B", tp: 30, ap: 3, moe: true, vF8: 32, vBF: 60, tF8: 180, tBF: 120, gF8: 1, gBF: 1, ctx: 32768, ctxM: 262144, note: "MoE 128e/8a. Кодерская модель, 256K контекст", tk: 0 },
+  "Qwen3-Coder-480B-A35B": { label: "Qwen3-Coder-480B-A35B", tp: 480, ap: 35, moe: true, vF8: 500, vBF: 960, tF8: 40, tBF: 20, gF8: 8, gBF: 16, ctx: 32768, ctxM: 262144, note: "MoE. Флагман кодинга, 256K контекст", tk: 0 },
+  "Qwen3.5-27B": { label: "Qwen3.5-27B (dense)", tp: 27, ap: 27, moe: false, vF8: 28, vBF: 54, tF8: 140, tBF: 85, gF8: 1, gBF: 1, ctx: 262144, ctxM: 1048576, note: "Dense 27B, 262K нативный, до 1M YaRN", tk: 0 },
   "Qwen3-32B": { label: "Qwen3-32B (dense)", tp: 32, ap: 32, moe: false, vF8: 34, vBF: 64, tF8: 120, tBF: 70, gF8: 1, gBF: 1, ctx: 32768, ctxM: 131072, note: "Dense 32B, универсальная", tk: 0 },
   "Qwen3-14B": { label: "Qwen3-14B", tp: 14, ap: 14, moe: false, vF8: 15, vBF: 28, tF8: 250, tBF: 150, gF8: 1, gBF: 1, ctx: 32768, ctxM: 131072, note: "Dense 14B, быстрая для простых задач", tk: 0 },
   "Qwen3-8B": { label: "Qwen3-8B", tp: 8, ap: 8, moe: false, vF8: 9, vBF: 16, tF8: 350, tBF: 200, gF8: 1, gBF: 1, ctx: 32768, ctxM: 131072, note: "Dense 8B, минимальные ресурсы", tk: 0 },
@@ -26,7 +28,7 @@ const TIERS = {
     defs: { people: 300, skill: "intermediate", sessionsPerDay: 4, inputPerSession: 4000, outputPerSession: 2500, concurrency: 0.10, chain: 1, model: "Qwen3-235B-A22B-Instruct" },
     desc: "Аналитика, рефакторинг, длинные документы, итеративные диалоги" },
   simple: { label: "Чат: простые задачи", icon: "\u{1F4AC}", color: "#059669",
-    defs: { people: 3500, skill: "intermediate", sessionsPerDay: 20, inputPerSession: 1500, outputPerSession: 800, concurrency: 0.06, chain: 1, model: "Qwen3-Coder-30B" },
+    defs: { people: 3500, skill: "intermediate", sessionsPerDay: 20, inputPerSession: 1500, outputPerSession: 800, concurrency: 0.06, chain: 1, model: "Qwen3-Coder-30B-A3B" },
     desc: "Q&A, переводы, саммари, письма" },
 };
 
